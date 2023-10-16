@@ -45,6 +45,7 @@ playBtnDOMElement.addEventListener('click', function(){
     gridDOMElement.innerHTML = '';
     let counter = 0;
     document.querySelector('.grid').classList.remove('grid-easy', 'grid-medium', 'grid-hard');
+    gridDOMElement.classList.remove('not-clickable')
 
     // Livello di difficoltà
     const difficultyValue = parseInt(difficultyDOMElement.value);
