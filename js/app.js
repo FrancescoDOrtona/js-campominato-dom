@@ -30,7 +30,8 @@ console.log(gridDOMElement)
 const playBtnDOMElement = document.querySelector('.play-btn');
 const difficultyDOMElement = document.getElementById('difficulty');
 console.log(difficultyDOMElement);
-
+const scoreCounterDOMElement = document.getElementsByClassName('score__counter')
+// console.log(scoreCounterDOMElement)
 
 
 //  Ciclo for per creare ed inserire gli elementi nel DOM
@@ -85,6 +86,7 @@ playBtnDOMElement.addEventListener('click', function(){
 
             if(bombArray.includes(boxNumber)){
                 currentBoxDOMElement.classList.add('bg-red');
+                alert('Game Over');                           
             }
 
         });       
