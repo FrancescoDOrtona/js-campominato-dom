@@ -6,6 +6,24 @@ function boxBgOnClick() {
     console.log('La casella ha il numero:' + this.innerHTML)
 }
 
+function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
+function getArrayOfRandomBetween (min, max, range){
+    const bombsArray = [];
+
+    while (bombsArray.length < range){
+        const randomNumber =  getRandomIntInclusive(min,max);
+        if (bombsArray.includes(randomNumber) === false){
+            bombsArray.push(randomNumber)
+        }
+    }
+    return bombsArray
+}
+
 // Variabili
 const gridDOMElement = document.querySelector('.grid');
 console.log(gridDOMElement)
@@ -38,24 +56,28 @@ playBtnDOMElement.addEventListener('click', function(){
      }
      console.log(difficultyLevel)
 
+    //  array delle bombe
+    const bombArray = getArrayOfRandomBetween(1, difficultyLevel, 16);
+    console.log(bombArray);
+
     for (let i = 0; i < difficultyLevel; i++){
         const n = (i + 1);
     
         const boxDOMElement = `<div class="box">${n}</div>`;
-        console.log(boxDOMElement);
+        // console.log(boxDOMElement);
     
         gridDOMElement.innerHTML += boxDOMElement;  
     }
 
     // Recupero le caselle dal DOM
     const boxDOMElements = document.querySelectorAll('.box');
-    console.log(boxDOMElements);
+    // console.log(boxDOMElements);
     
     // Creo un ciclo per poi prendere ogni casella del DOM singolarmente
     for (let i = 0; i < boxDOMElements.length; i++){
 
         const currentBoxDOMElement = boxDOMElements[i]
-        console.log(currentBoxDOMElement)
+        // console.log(currentBoxDOMElement)
 
         currentBoxDOMElement.addEventListener('click', boxBgOnClick);       
     }
