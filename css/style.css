@@ -88,6 +88,10 @@ header{
     cursor: pointer;
 }
 
+.not-clickable{
+    pointer-events: none;
+}
+
 
 .bg-azure{
     background-color: cornflowerblue;

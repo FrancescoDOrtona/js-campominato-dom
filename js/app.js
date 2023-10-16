@@ -29,7 +29,6 @@ function counterIncrement(counter){
     return counter
 }
 
-
 // Variabili
 const gridDOMElement = document.querySelector('.grid');
 console.log(gridDOMElement)
@@ -79,22 +78,29 @@ playBtnDOMElement.addEventListener('click', function(){
 
     // Recupero le caselle dal DOM
     const boxDOMElements = document.querySelectorAll('.box');
-    // console.log(boxDOMElements);
+    console.log(boxDOMElements);
     
+    
+
+
     // Creo un ciclo per poi prendere ogni casella del DOM singolarmente
     for (let i = 0; i < boxDOMElements.length; i++){
 
         const currentBoxDOMElement = boxDOMElements[i]
-        // console.log(currentBoxDOMElement)
+        console.log(currentBoxDOMElement)
 
         currentBoxDOMElement.addEventListener('click', function(){
             const boxNumber = parseInt(currentBoxDOMElement.innerHTML)
-            console.log(boxNumber,typeof(boxNumber))
-            // let counter = parseInt(scoreCounterDOMElement.innerHTML) 
+            console.log(boxNumber,typeof(boxNumber)); 
 
             if(bombArray.includes(boxNumber)){
+                alert('Game Over');
                 currentBoxDOMElement.classList.add('bg-red');
-                alert('Game Over');               
+                for (let i = 0; i < bombArray.length; i++){
+                    boxDOMElements[bombArray[i] - 1].classList.add('bg-red');
+                }
+                gridDOMElement.classList.add('not-clickable')                
+                                                                                             
             } else{ 
                 currentBoxDOMElement.classList.add('bg-azure');
                 counter = counterIncrement(counter);               
@@ -103,7 +109,7 @@ playBtnDOMElement.addEventListener('click', function(){
             }
                 
             if (counter === (difficultyLevel - 16)) {
-                alert('Hai vinto')
+                alert('Hai vinto');
             }                                                                                                                  
         });       
     }
