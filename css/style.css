@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+body{
+    background-image: url(../img/low-poly-grid-haikei.svg);
+    color: white;
+    max-height: 100vh;
+    overflow: hidden;
+    user-select: none;
+}
+/* Header */
+header{
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.title{
+    margin-bottom: 20px;
+}
+
+.play-btn, #difficulty{
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    background-color: rgb(18, 177, 18);
+    color: white;
+    cursor: pointer;
+}
+
+/* Game content */
+
+.game-content{
+    padding: 20px 0px;
+}
+
+.grid{
+    display: grid;
+}
+
+.grid-easy{
+    grid-template-columns: repeat(10, 1fr);
+}
+
+.grid-medium{
+    grid-template-columns: repeat(9, 1fr);
+}
+
+.grid-hard{
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.box{
+    aspect-ratio: 1;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.bg-azure{
+    background-color: cornflowerblue;
+}
