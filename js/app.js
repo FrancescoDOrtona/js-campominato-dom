@@ -18,7 +18,7 @@ function getArrayOfRandomBetween (min, max, range){
     while (bombsArray.length < range){
         const randomNumber =  getRandomIntInclusive(min,max);
         if (bombsArray.includes(randomNumber) === false){
-            bombsArray.push(randomNumber)
+            bombsArray.push(randomNumber);
         }
     }
     return bombsArray
@@ -79,6 +79,14 @@ playBtnDOMElement.addEventListener('click', function(){
         const currentBoxDOMElement = boxDOMElements[i]
         // console.log(currentBoxDOMElement)
 
-        currentBoxDOMElement.addEventListener('click', boxBgOnClick);       
+        currentBoxDOMElement.addEventListener('click', function(){
+            const boxNumber = parseInt(currentBoxDOMElement.innerHTML)
+            console.log(boxNumber,typeof(boxNumber))
+
+            if(bombArray.includes(boxNumber)){
+                currentBoxDOMElement.classList.add('bg-red');
+            }
+
+        });       
     }
 })
