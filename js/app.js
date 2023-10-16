@@ -24,13 +24,19 @@ function getArrayOfRandomBetween (min, max, range){
     return bombsArray
 }
 
+function counterIncrement(counter){
+    counter = counter + 1;
+    return counter
+}
+
+
 // Variabili
 const gridDOMElement = document.querySelector('.grid');
 console.log(gridDOMElement)
 const playBtnDOMElement = document.querySelector('.play-btn');
 const difficultyDOMElement = document.getElementById('difficulty');
 console.log(difficultyDOMElement);
-const scoreCounterDOMElement = document.getElementsByClassName('score__counter')
+const scoreCounterDOMElement = document.querySelector('.score__counter')
 // console.log(scoreCounterDOMElement)
 
 
@@ -38,6 +44,7 @@ const scoreCounterDOMElement = document.getElementsByClassName('score__counter')
 playBtnDOMElement.addEventListener('click', function(){
 
     gridDOMElement.innerHTML = '';
+    let counter = 0;
     document.querySelector('.grid').classList.remove('grid-easy', 'grid-medium', 'grid-hard');
 
     // Livello di difficoltà
@@ -83,12 +90,21 @@ playBtnDOMElement.addEventListener('click', function(){
         currentBoxDOMElement.addEventListener('click', function(){
             const boxNumber = parseInt(currentBoxDOMElement.innerHTML)
             console.log(boxNumber,typeof(boxNumber))
+            // let counter = parseInt(scoreCounterDOMElement.innerHTML) 
 
             if(bombArray.includes(boxNumber)){
                 currentBoxDOMElement.classList.add('bg-red');
-                alert('Game Over');                           
+                alert('Game Over');               
+            } else{ 
+                currentBoxDOMElement.classList.add('bg-azure');
+                counter = counterIncrement(counter);               
+                scoreCounterDOMElement.innerHTML = counter;
+                console.log(counter);                    
             }
-
+                
+            if (counter === (difficultyLevel - 16)) {
+                alert('Hai vinto')
+            }                                                                                                                  
         });       
     }
 })
